@@ -39,6 +39,8 @@
 /** The width of the photo. */
 @property (nonatomic, strong) NSNumber *width;
 
+@property(nonatomic,assign) NSInteger index;
+
 /**
  Parses and returns a list of photo metadata from a request response.
  

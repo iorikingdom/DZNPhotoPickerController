@@ -10,13 +10,17 @@
 
 #import "DZNPhotoPickerController.h"
 #import "UIImagePickerControllerExtended.h"
+#import "DZNPhotoMetadata.h"
 
 #import "Private.h"
+#import <MWPhotoBrowser.h>
 
-@interface RootViewController () {
+@interface RootViewController ()<MWPhotoBrowserDelegate> {
     UIPopoverController *_popoverController;
     NSDictionary *_photoPayload;
 }
+
+@property(nonatomic,strong) NSMutableArray *arrayPhotoMetas;
 @end
 
 @implementation RootViewController
@@ -100,6 +104,21 @@
     [self presentPhotoPickerWithImage:image];
 }
 
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return [_arrayPhotoMetas count];
+}
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+
+    DZNPhotoMetadata *metadata = [_arrayPhotoMetas objectAtIndex:index];
+//    NSURL *url = [NSURL URLWithString:strUrl];
+    
+    MWPhoto *photo = [[MWPhoto alloc]initWithURL:metadata.sourceURL];
+//    photo.caption = [_arrayPhotoMetas firstObject][DZNPhotoPickerControllerPhotoMetadata][@"source_name"];
+
+    return photo;
+}
 - (void)presentPhotoPickerWithImage:(UIImage *)image
 {
     DZNPhotoPickerController *picker = nil;
@@ -110,17 +129,45 @@
     }
     else {
         picker = [DZNPhotoPickerController new];
-        picker.supportedServices = DZNPhotoPickerControllerService500px | DZNPhotoPickerControllerServiceFlickr | DZNPhotoPickerControllerServiceInstagram;
-        picker.allowsEditing = YES;
-        picker.cropMode = DZNPhotoEditorViewControllerCropModeSquare;
+        picker.supportedServices = DZNPhotoPickerControllerService500px | DZNPhotoPickerControllerServiceFlickr | DZNPhotoPickerControllerServiceInstagram|DZNPhotoPickerControllerServiceGoogleImages|DZNPhotoPickerControllerServiceBingImages;
+        picker.allowsEditing = NO;
+        picker.cropMode = DZNPhotoEditorViewControllerCropModeNone;
         picker.initialSearchTerm = @"California";
         picker.enablePhotoDownload = YES;
         picker.allowAutoCompletedSearch = YES;
     }
     
+    self.arrayPhotoMetas = [NSMutableArray array];
+    
     picker.finalizationBlock = ^(DZNPhotoPickerController *picker, NSDictionary *info) {
-        [self updateImageWithPayload:info];
-        [self dismissController:picker];
+
+        [self.arrayPhotoMetas removeAllObjects];
+        [self.arrayPhotoMetas addObjectsFromArray:[picker getMetadataList]];
+
+       dispatch_async(dispatch_get_main_queue(), ^{
+            MWPhotoBrowser *photoBrowser = [[MWPhotoBrowser alloc]initWithDelegate:self];
+            photoBrowser.displayActionButton = YES; // Show action button to allow sharing, copying, etc (defaults to YES)
+            photoBrowser.displayNavArrows = YES; // Whether to display left and right nav arrows on toolbar (defaults to NO)
+            photoBrowser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
+            photoBrowser.zoomPhotosToFill = YES; // Images that almost fill the screen will be initially zoomed to fill (defaults to YES)
+            photoBrowser.alwaysShowControls = NO; // Allows to control whether the bars and controls are always visible or whether they fade away to show the photo full (defaults to NO)
+            photoBrowser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+            photoBrowser.startOnGrid = NO; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO)
+//            photoBrowser.wantsFullScreenLayout = YES; // iOS 5 & 6 only: Decide if you want the photo browser full screen, i.e. whether the status bar is affected (defaults to YES)
+           
+           
+
+           
+           
+           // Optionally set the current visible photo before displaying
+           [photoBrowser setCurrentPhotoIndex:[info[DZNPhotoPickerControllerPhotoMetadata][@"index"] integerValue]];
+           
+//            UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:photoBrowser];
+//            [self presentViewController:navigationController animated:TRUE completion:nil];
+            [picker pushViewController:photoBrowser animated:YES];
+        });
+
+
     };
     
     picker.failureBlock = ^(DZNPhotoPickerController *picker, NSError *error) {

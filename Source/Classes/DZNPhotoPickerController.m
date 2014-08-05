@@ -21,6 +21,8 @@ static DZNPhotoPickerControllerCancellationBlock _cancellationBlock;
 @interface DZNPhotoPickerController ()
 @property (nonatomic, getter = isEditing) BOOL editing;
 @property (nonatomic, assign) UIImage *editingImage;
+
+@property(nonatomic,strong) DZNPhotoDisplayViewController *photoDisplayViewController;
 @end
 
 @implementation DZNPhotoPickerController
@@ -146,6 +148,12 @@ static DZNPhotoPickerControllerCancellationBlock _cancellationBlock;
 
 #pragma mark - DZNPhotoPickerController methods
 
+
+-(NSArray *)getMetadataList
+{
+    return _photoDisplayViewController.metadataList;
+}
+
 /*
  * Shows the photo display controller.
  */
@@ -153,14 +161,14 @@ static DZNPhotoPickerControllerCancellationBlock _cancellationBlock;
 {
     [self setViewControllers:nil];
     
-    DZNPhotoDisplayViewController *controller = [[DZNPhotoDisplayViewController alloc] init];
+     self.photoDisplayViewController = [[DZNPhotoDisplayViewController alloc] init];
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStylePlain target:self action:@selector(cancelPicker:)];
-        [controller.navigationItem setRightBarButtonItem:cancel];
+        [_photoDisplayViewController.navigationItem setRightBarButtonItem:cancel];
     }
     
-    [self setViewControllers:@[controller]];
+    [self setViewControllers:@[_photoDisplayViewController]];
 }
 
 /*
@@ -260,5 +268,6 @@ static DZNPhotoPickerControllerCancellationBlock _cancellationBlock;
 {
     return NO;
 }
+
 
 @end

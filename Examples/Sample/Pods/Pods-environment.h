@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// DACircularProgress
+#define COCOAPODS_POD_AVAILABLE_DACircularProgress
+#define COCOAPODS_VERSION_MAJOR_DACircularProgress 2
+#define COCOAPODS_VERSION_MINOR_DACircularProgress 2
+#define COCOAPODS_VERSION_PATCH_DACircularProgress 0
+
 // DZNEmptyDataSet
 #define COCOAPODS_POD_AVAILABLE_DZNEmptyDataSet
 #define COCOAPODS_VERSION_MAJOR_DZNEmptyDataSet 1
@@ -72,15 +78,93 @@
 #define COCOAPODS_VERSION_MINOR_DZNPhotoPickerController_UIImagePickerControllerExtended 5
 #define COCOAPODS_VERSION_PATCH_DZNPhotoPickerController_UIImagePickerControllerExtended 0
 
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 8
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 0
+
+// MWPhotoBrowser
+#define COCOAPODS_POD_AVAILABLE_MWPhotoBrowser
+#define COCOAPODS_VERSION_MAJOR_MWPhotoBrowser 1
+#define COCOAPODS_VERSION_MINOR_MWPhotoBrowser 4
+#define COCOAPODS_VERSION_PATCH_MWPhotoBrowser 0
+
+// PSTCollectionView
+#define COCOAPODS_POD_AVAILABLE_PSTCollectionView
+#define COCOAPODS_VERSION_MAJOR_PSTCollectionView 1
+#define COCOAPODS_VERSION_MINOR_PSTCollectionView 2
+#define COCOAPODS_VERSION_PATCH_PSTCollectionView 1
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage 0
+#define COCOAPODS_VERSION_PATCH_SDWebImage 1
 
 // SDWebImage/Core
 #define COCOAPODS_POD_AVAILABLE_SDWebImage_Core
 #define COCOAPODS_VERSION_MAJOR_SDWebImage_Core 3
 #define COCOAPODS_VERSION_MINOR_SDWebImage_Core 7
-#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 0
+#define COCOAPODS_VERSION_PATCH_SDWebImage_Core 1
+
+// SDWebImage/MapKit
+#define COCOAPODS_POD_AVAILABLE_SDWebImage_MapKit
+#define COCOAPODS_VERSION_MAJOR_SDWebImage_MapKit 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage_MapKit 7
+#define COCOAPODS_VERSION_PATCH_SDWebImage_MapKit 1
+
+// SDWebImage/WebP
+#define COCOAPODS_POD_AVAILABLE_SDWebImage_WebP
+#define COCOAPODS_VERSION_MAJOR_SDWebImage_WebP 3
+#define COCOAPODS_VERSION_MINOR_SDWebImage_WebP 7
+#define COCOAPODS_VERSION_PATCH_SDWebImage_WebP 1
+
+// libwebp
+#define COCOAPODS_POD_AVAILABLE_libwebp
+#define COCOAPODS_VERSION_MAJOR_libwebp 0
+#define COCOAPODS_VERSION_MINOR_libwebp 4
+#define COCOAPODS_VERSION_PATCH_libwebp 0
+
+// libwebp/dec
+#define COCOAPODS_POD_AVAILABLE_libwebp_dec
+#define COCOAPODS_VERSION_MAJOR_libwebp_dec 0
+#define COCOAPODS_VERSION_MINOR_libwebp_dec 4
+#define COCOAPODS_VERSION_PATCH_libwebp_dec 0
+
+// libwebp/demux
+#define COCOAPODS_POD_AVAILABLE_libwebp_demux
+#define COCOAPODS_VERSION_MAJOR_libwebp_demux 0
+#define COCOAPODS_VERSION_MINOR_libwebp_demux 4
+#define COCOAPODS_VERSION_PATCH_libwebp_demux 0
+
+// libwebp/dsp
+#define COCOAPODS_POD_AVAILABLE_libwebp_dsp
+#define COCOAPODS_VERSION_MAJOR_libwebp_dsp 0
+#define COCOAPODS_VERSION_MINOR_libwebp_dsp 4
+#define COCOAPODS_VERSION_PATCH_libwebp_dsp 0
+
+// libwebp/enc
+#define COCOAPODS_POD_AVAILABLE_libwebp_enc
+#define COCOAPODS_VERSION_MAJOR_libwebp_enc 0
+#define COCOAPODS_VERSION_MINOR_libwebp_enc 4
+#define COCOAPODS_VERSION_PATCH_libwebp_enc 0
+
+// libwebp/mux
+#define COCOAPODS_POD_AVAILABLE_libwebp_mux
+#define COCOAPODS_VERSION_MAJOR_libwebp_mux 0
+#define COCOAPODS_VERSION_MINOR_libwebp_mux 4
+#define COCOAPODS_VERSION_PATCH_libwebp_mux 0
+
+// libwebp/utils
+#define COCOAPODS_POD_AVAILABLE_libwebp_utils
+#define COCOAPODS_VERSION_MAJOR_libwebp_utils 0
+#define COCOAPODS_VERSION_MINOR_libwebp_utils 4
+#define COCOAPODS_VERSION_PATCH_libwebp_utils 0
+
+// libwebp/webp
+#define COCOAPODS_POD_AVAILABLE_libwebp_webp
+#define COCOAPODS_VERSION_MAJOR_libwebp_webp 0
+#define COCOAPODS_VERSION_MINOR_libwebp_webp 4
+#define COCOAPODS_VERSION_PATCH_libwebp_webp 0
 

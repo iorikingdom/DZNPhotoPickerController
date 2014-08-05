@@ -26,9 +26,12 @@
 /** YES if the controller started a request and loading content. */
 @property (nonatomic, readonly, getter = isLoading) BOOL loading;
 
+@property (nonatomic, strong) NSMutableArray *metadataList;
+
 /**
  Stops any loading HTTP request.
  */
 - (void)stopLoadingRequest;
+
 
 @end

@@ -617,6 +617,8 @@ DZNPhotoAspect photoAspectFromSize(CGSize aspectRatio)
     if (metadata.authorProfileURL) [attributes setObject:metadata.authorProfileURL forKey:@"author_profile_url"];
     if (metadata.contentType) [attributes setObject:metadata.contentType forKey:@"content_type"];
     
+    [attributes setObject:[NSNumber numberWithInteger:metadata.index] forKey:@"index"];
+    
     if (attributes.allKeys.count > 0) {
         [userInfo setObject:attributes forKey:DZNPhotoPickerControllerPhotoMetadata];
     }
